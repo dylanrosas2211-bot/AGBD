@@ -89,3 +89,37 @@ JOIN media_types mt ON t.MediaTypeId = mt.MediaTypeId
 JOIN playlist_track pt ON t.TrackId = pt.TrackId
 JOIN playlists p ON pt.PlaylistId = p.PlaylistId;
  
+
+
+
+--Parte I: Investigación y Análisis Crítico
+--Antes de tocar la base de datos, investiguen y justifiquen sus respuestas:
+--El peligro del "Empty WHERE": Expliquen técnicamente qué sucede en la memoria y en el almacenamiento de la base de datos cuando se ejecuta un UPDATE o un DELETE sin la cláusula WHERE.
+
+Cuando ejecutas un UPDATE o un DELETE en SQL sin incluir la cláusula WHERE, lo que sucede es que la operación se aplica a todos los registros de la tabla, no solo a algunos específicos.
+
+
+--Integridad Referencial: ¿Qué es una restricción de clave foránea (FOREIGN KEY --constraint) y cómo protege la consistencia de los datos al intentar usar DELETE?
+
+Una clave foránea es una restricción que asegura que los valores de una columna en una tabla existan en otra tabla. Protege la consistencia de los datos al bloquear un DELETE en la tabla padre si existen registros relacionados en la tabla hija, evitando que queden datos “huérfanos”.
+
+--Nueva Incorporación: Deben dar de alta un nuevo álbum en la tienda. Para esto, sigan el orden lógico de integridad:
+--Primero, inserten un nuevo artista en artists (ej: "Divididos").
+
+INSERT INTO artists (name)
+VALUES ("Divididos")
+
+--Segundo, inserten un álbum para ese artista en albums.
+
+INSERT INTO albums (title, ArtistId)
+VALUES (
+  'OKTUBRE',276
+);
+
+
+
+
+
+
+
+
