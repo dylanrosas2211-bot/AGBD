@@ -1,0 +1,64 @@
+DEFINICION DE ORM Y PRISMA
+
+ORM: Es una herramienta que facilita la comunicacion entre
+un programa y una base de datos. Permite trabajar con los
+datos de una forma mas sencilla, sin tener que escribir
+directamente muchas consultas SQL.
+
+Prisma: Es un ORM que se utiliza principalmente con JavaScript 
+y TypeScript. Permite crear, consultar, modificar y eliminar 
+datos de una base de datos de manera mas facil y ordenada.
+
+En pocas palabras: un ORM es el concepto y Prisma es 
+una herramienta que lo utiliza.
+
+DIFERENCIASCON LO VISTO/TRABAJADO 1ER BIMESTRE
+
+Durante el primer bimestre trabajamos mucho con SQL y bases de
+datos de forma directa. Hicimos consultas utilizando instrucciones
+como SELECT, WHERE, JOIN, GROUP BY, ORDER BY, INSERT, UPDATE y
+DELETE. Por ejemplo, para obtener informacion de diferentes tablas
+utilizabamos consultas SQL y teniamos que indicar manualmente
+como se relacionaban las tablas, lo que trabajamos en el primer
+bimestre nos hizo aprender como funcionan las bases de datos y
+como realizar operaciones directamente con SQL.
+ORM y Prisma representan una forma diferente y mas integrada
+de trabajar con esos mismos datos desde una aplicacion,
+facilitando las consultas y reduciendo la necesidad de
+escribir SQL manualmente.
+
+
+EJEMPLO DE PRISMA 
+
+obtener todos los empleados con sql:
+
+SELECT FirstName, LastName
+FROM employees
+ORDER BY LastName ASC;
+
+con prisma:
+
+const empleados = await prisma.employee.findMany({
+  select: {
+    FirstName: true,
+    LastName: true
+  },
+  orderBy: {
+    LastName: 'asc'
+  }
+});
+
+console.log(empleados);
+
+const empleados: creamos una variable llamada empleados.
+=: guardamos el resultado de la consulta en esa variable.
+await: esperamos la respuesta de la base de datos.
+prisma: es nuestro Prisma Client, que permite comunicarnos con la base de datos.
+employee: representa el modelo de empleados.
+findMany(): significa “buscar muchos registros”.
+select: indica que datos queremos obtener.
+FirstName: true  seleccionamos el nombre del empleado.
+LastName: true : seleccionamos el apellido del empleado.
+orderBy : indica como queremos ordenar los resultados.
+LastName: 'asc' : ordenamos los empleados por apellido de forma ascendente, es decir, de A a Z.
+console.log(empleados) : muestra los empleados obtenidos en la consola.
