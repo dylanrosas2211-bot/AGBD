@@ -168,12 +168,15 @@ if session.query(Productos).count() == 0:
 
 #print("Cantidad:", len(productos_con_a))
 
-productos_m = session.query(Productos).filter(
-    Productos.nombre.startswith("M")
-).all()
+11 #productos_m = session.query(Productos).filter(
+#    Productos.nombre.startswith("M")
+#).all()
 
-for producto in productos_m:
-    print(producto.nombre)
+#for producto in productos_m:
+#    print(producto.nombre)
+
+
+
 
 # 2. Consultamos como si fueran objetos Python (filtrar tablas aca.!)
 #with Session(engine) as session:
