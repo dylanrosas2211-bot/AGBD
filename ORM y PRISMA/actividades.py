@@ -175,9 +175,21 @@ if session.query(Productos).count() == 0:
 #for producto in productos_m:
 #    print(producto.nombre)
 
+nuevo = Productos(
+    nombre="producto prueba",
+    categoria=None,
+    precio=None,
+    stock=5,
+    activo=True
+)
 
+session.add(nuevo)
+session.commit()
+sin_categoria = session.query(Productos).filter(Productos.categoria == None).all()
 
-
+for p in sin_categoria:
+    print(p.id, "-", p.nombre, "-", p.categoria)
+    
 # 2. Consultamos como si fueran objetos Python (filtrar tablas aca.!)
 #with Session(engine) as session:
 #    usuarios = session.query(Usuario) \
