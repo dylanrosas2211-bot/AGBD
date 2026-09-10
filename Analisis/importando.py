@@ -74,21 +74,30 @@ print("Grafico de barras guardado exitosamente.")
 #--------------------------------------------------
 # GRAFICO de Torta
 #--------------------------------------------------
+print("\nGenerando gráfico de torta...")
 
-print("\n Generando Grafico de Torta")
-
-datos_torta =(
-    df.groupby("hardware_type")["trade_value_usd_millions"]
+datos_torta = (
+    df.groupby("genre")["fragment_start_sec"]
     .sum()
     .nlargest(5)
 )
-plt.figure(figsize=(7,7))
+
+plt.figure(figsize=(7, 7))
+
 plt.pie(
-    datos_torta.value,
+    datos_torta,
     labels=datos_torta.index,
     autopct="%1.1f%%",
     colors=sns.color_palette("Set2")[0:5],
     startangle=140,
-    wedgeprops=git
-
+    wedgeprops={
+        "edgecolor": "white",
+        "linewidth": 2
+    }
 )
+
+plt.title("Distribución de las categorías")
+plt.savefig("grafico_torta.png", dpi=300)
+plt.close()
+
+print("Gráfico de torta guardado exitosamente.")
